@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/styles.css"],
+  "sourcesContent": ["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\r\n  background: #f5f7fa;\r\n  color: #333;\r\n  min-height: 100vh;\r\n}\r\n\r\n.app {\r\n  min-height: 100vh;\r\n}\r\n"],
+  "mappings": ";AAAA;AACE,UAAQ;AACR,WAAS;AACT,cAAY;AACd;AAEA;AACE;AAAA,IAAa,aAAa;AAAA,IAAE,kBAAkB;AAAA,IAAE,UAAU;AAAA,IAAE,MAAM;AAAA,IAAE,gBAAgB;AAAA,IAAE,KAAK;AAAA,IAAE;AAC7F,cAAY;AACZ,SAAO;AACP,cAAY;AACd;AAEA,CAAC;AACC,cAAY;AACd;",
+  "names": []
+}
