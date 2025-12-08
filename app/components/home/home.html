@@ -1,0 +1,68 @@
+<div class="home-container">
+  <!-- Section Héro avec image de fond -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+  </section>
+
+  <!-- Section Nos grandes boxes -->
+  <section class="boxes-section">
+    <h2 class="section-title">Nos Menus</h2>
+    
+    <div class="products-grid">
+      @if (loading) {
+        <div class="loading">Chargement des produits...</div>
+      } @else {
+        @for (box of largeBoxes; track box.id) {
+          <div class="product-card">
+            <a [routerLink]="['/product', box.id]" class="product-link">
+              <div class="product-image">
+                <img src="/sushi1.jpg" [alt]="box.name" />
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">{{ box.name }}</h3>
+                <p class="product-price">{{ box.price }} €</p>
+              </div>
+            </a>
+            <button class="btn-add-cart" (click)="addToCart(box)">
+              Ajouter au panier
+            </button>
+          </div>
+        }
+      }
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Réseaux:</h3>
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank" class="social-link">
+            <span class="icon">📷</span> Instagram
+          </a>
+          <a href="https://facebook.com" target="_blank" class="social-link">
+            <span class="icon">📘</span> Facebook
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contacts:</h3>
+        <div class="contact-info">
+          <p class="contact-item">
+            <span class="icon">📞</span> +33 6 67 68 69 70
+          </p>
+          <p class="contact-item">
+            <span class="icon">✉️</span> sushiparadise@gmail.com
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Toutes les sushis été créés avec amour</p>
+      <p>© SushiParadise, Cahier de l'art du Nigiri</p>
+    </div>
+  </footer>
+</div>

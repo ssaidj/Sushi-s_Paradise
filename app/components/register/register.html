@@ -1,0 +1,99 @@
+<div class="register-container">
+  <div class="register-card">
+    <h1>🍣 Sushi Paradise</h1>
+    <h2>Créer un compte</h2>
+    
+    <form (ngSubmit)="onSubmit()" class="register-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstname">Prénom *</label>
+          <input 
+            type="text" 
+            id="firstname" 
+            name="firstname"
+            [(ngModel)]="firstname" 
+            placeholder="Votre prénom"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="lastname">Nom *</label>
+          <input 
+            type="text" 
+            id="lastname" 
+            name="lastname"
+            [(ngModel)]="lastname" 
+            placeholder="Votre nom"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email"
+          [(ngModel)]="email" 
+          placeholder="votre@email.com"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe *</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password"
+          [(ngModel)]="password" 
+          placeholder="Minimum 6 caractères"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe *</label>
+        <input 
+          type="password" 
+          id="confirmPassword" 
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword" 
+          placeholder="Répétez votre mot de passe"
+          required
+        />
+      </div>
+
+      <div class="form-group-checkbox">
+        <input 
+          type="checkbox" 
+          id="isStudent" 
+          name="isStudent"
+          [(ngModel)]="isStudent"
+        />
+        <label for="isStudent">Je suis étudiant(e) - Profiter de -10% sur mes commandes</label>
+      </div>
+
+      @if (errorMessage) {
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <button type="submit" [disabled]="isLoading" class="btn-submit">
+        @if (isLoading) {
+          <span>Création en cours...</span>
+        } @else {
+          <span>Créer mon compte</span>
+        }
+      </button>
+
+      <div class="login-link">
+        Vous avez déjà un compte? 
+        <a routerLink="/login">Se connecter</a>
+      </div>
+    </form>
+  </div>
+</div>

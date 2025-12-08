@@ -1,0 +1,25 @@
+<div class="catalog-page">
+  <h1 class="page-title">{{ pageTitle }}</h1>
+  
+  @if (isLoading) {
+    <div class="loading">Chargement...</div>
+  } @else {
+    <div class="boxes-grid">
+      @for (box of boxes; track box.id) {
+        <div class="box-card">
+          <a [routerLink]="['/product', box.id]" class="box-link">
+            <img src="/sushi1.jpg" [alt]="box.name" class="box-image" />
+            <div class="box-content">
+              <h3 class="box-name">{{ box.name }}</h3>
+              <p class="box-description">{{ box.description }}</p>
+              <p class="box-price">{{ box.price | number:'1.2-2' }}€</p>
+            </div>
+          </a>
+          <button (click)="addToCart(box)" class="btn-add-cart">
+            Ajouter au panier
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

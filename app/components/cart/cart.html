@@ -1,0 +1,63 @@
+<div class="cart-container">
+  <h1>🛒 Mon Panier</h1>
+
+  @if (cartItems.length === 0) {
+    <div class="empty-cart">
+      <p>Votre panier est vide</p>
+      <a routerLink="/catalog" class="btn-primary">Voir le catalogue</a>
+    </div>
+  } @else {
+    @if (errorMessage) {
+      <div class="error-message">{{ errorMessage }}</div>
+    }
+
+    <div class="cart-items">
+      @for (item of cartItems; track item.box.id) {
+        <div class="cart-item">
+          <div class="item-info">
+            <h3>{{ item.box.name }}</h3>
+            <p>{{ item.box.price }}€ / pièce</p>
+            @if (item.extras) {
+              <div class="extras-info">
+                <strong>Avec :</strong>
+                @if (item.extras.sauceSalee) { <span class="extra-tag">Sauce Soja salée</span> }
+                @if (item.extras.sauceSucree) { <span class="extra-tag">Sauce Soja sucrée</span> }
+                @if (item.extras.gingembre) { <span class="extra-tag">Gingembre</span> }
+                @if (item.extras.wasabi) { <span class="extra-tag">Wasabi</span> }
+              </div>
+            }
+          </div>
+          
+          <div class="item-actions">
+            <div class="quantity-control">
+              <button (click)="updateQuantity(item.box.id, item.quantity - 1)">-</button>
+              <span>{{ item.quantity }}</span>
+              <button (click)="updateQuantity(item.box.id, item.quantity + 1)">+</button>
+            </div>
+            
+            <span class="item-total">{{ item.box.price * item.quantity }}€</span>
+            
+            <button (click)="removeItem(item.box.id)" class="btn-remove">
+              ❌
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Quantité totale:</span>
+        <strong>{{ totalQuantity }} boxes</strong>
+      </div>
+      <div class="summary-row total">
+        <span>Total:</span>
+        <strong>{{ totalPrice | number:'1.2-2' }}€</strong>
+      </div>
+
+      <button (click)="checkout()" class="btn-checkout">
+        Passer la commande
+      </button>
+    </div>
+  }
+</div>

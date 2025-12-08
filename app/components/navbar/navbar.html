@@ -1,0 +1,61 @@
+<nav class="navbar" (click)="closeDropdowns()">
+  <div class="nav-content">
+    <!-- Logo -->
+    <div class="nav-brand">
+      <a routerLink="/">
+        <img src="/logo.png" alt="Sushi's Paradise" class="logo-icon" />
+        <span class="logo-text">Sushi's Paradise</span>
+      </a>
+    </div>
+    
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <!-- Dropdown Nos boxes -->
+      <div class="dropdown" (click)="$event.stopPropagation()">
+        <button class="dropdown-toggle" (click)="toggleBoxesDropdown()">
+          Nos boxes
+          <span class="arrow">▼</span>
+        </button>
+        @if (showBoxesDropdown) {
+          <div class="dropdown-menu">
+            <a routerLink="/boxes/small" (click)="closeDropdowns()">Nos petites boxes</a>
+            <a routerLink="/boxes/large" (click)="closeDropdowns()">Nos grandes boxes</a>
+          </div>
+        }
+      </div>
+
+      <!-- Offres étudiants -->
+      <a routerLink="/student-offers" class="nav-link">Offres étudiants</a>
+
+      <!-- Compte (Dropdown si connecté) -->
+      <div class="dropdown" (click)="$event.stopPropagation()">
+        <button class="nav-icon-btn" (click)="toggleAccountDropdown()">
+          <span class="icon">👤</span>
+          <span class="icon-label">Compte</span>
+        </button>
+        @if (showAccountDropdown) {
+          <div class="dropdown-menu dropdown-menu-right">
+            @if (authService.isLoggedIn()) {
+              <a routerLink="/profile" (click)="closeDropdowns()">Mon profil</a>
+              <a routerLink="/orders" (click)="closeDropdowns()">Mes commandes</a>
+              <button (click)="logout()" class="dropdown-logout">Déconnexion</button>
+            } @else {
+              <a routerLink="/login" (click)="closeDropdowns()">Se connecter</a>
+              <a routerLink="/register" (click)="closeDropdowns()">Créer un compte</a>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Panier -->
+      <a routerLink="/cart" class="nav-icon-btn cart-btn">
+        <span class="icon cart-icon">
+          🛒
+          @if (cartItemCount > 0) {
+            <span class="cart-badge">{{ cartItemCount }}</span>
+          }
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>

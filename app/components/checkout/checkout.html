@@ -1,0 +1,112 @@
+<div class="checkout-container">
+  @if (!orderConfirmed) {
+    <h1>🛒 Finaliser la commande</h1>
+
+    <!-- Récapitulatif de la commande -->
+    <div class="order-summary">
+      <h2>Récapitulatif</h2>
+      <div class="summary-items">
+        @for (item of cartItems; track item.box.id) {
+          <div class="summary-item">
+            <div class="item-details">
+              <span class="item-name">{{ item.box.name }} x{{ item.quantity }}</span>
+              @if (item.extras) {
+                <div class="extras-list">
+                  @if (item.extras.sauceSalee) { <span class="extra-badge">Sauce Soja salée</span> }
+                  @if (item.extras.sauceSucree) { <span class="extra-badge">Sauce Soja sucrée</span> }
+                  @if (item.extras.gingembre) { <span class="extra-badge">Gingembre</span> }
+                  @if (item.extras.wasabi) { <span class="extra-badge">Wasabi</span> }
+                </div>
+              }
+            </div>
+            <span class="item-price">{{ item.box.price * item.quantity | number:'1.2-2' }}€</span>
+          </div>
+        }
+      </div>
+      <div class="total-row">
+        <strong>Total ({{ totalQuantity }} produits):</strong>
+        <strong class="total-price">{{ totalPrice | number:'1.2-2' }}€</strong>
+      </div>
+    </div>
+
+    <!-- Type de commande -->
+    <div class="order-type-section">
+      <h2>Type de commande</h2>
+      <div class="order-type-info">
+        <span class="icon">📍</span>
+        <div>
+          <strong>Retrait sur place uniquement</strong>
+          <p>Votre commande sera à récupérer au restaurant Sushi's Paradise</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode de paiement -->
+    <div class="payment-section">
+      <h2>Mode de paiement</h2>
+      <div class="payment-options">
+        <div 
+          class="payment-option" 
+          [class.selected]="paymentMethod === 'cash'"
+          (click)="selectPaymentMethod('cash')">
+          <div class="payment-icon">💵</div>
+          <div class="payment-info">
+            <strong>Espèces sur place</strong>
+            <p>Payez en espèces lors du retrait</p>
+          </div>
+          <div class="payment-checkmark">
+            @if (paymentMethod === 'cash') {
+              <span>✓</span>
+            }
+          </div>
+        </div>
+
+        <div 
+          class="payment-option" 
+          [class.selected]="paymentMethod === 'card'"
+          (click)="selectPaymentMethod('card')">
+          <div class="payment-icon">💳</div>
+          <div class="payment-info">
+            <strong>Carte bancaire sur place</strong>
+            <p>Payez par CB lors du retrait</p>
+          </div>
+          <div class="payment-checkmark">
+            @if (paymentMethod === 'card') {
+              <span>✓</span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Boutons d'action -->
+    <div class="action-buttons">
+      <button class="btn-back" (click)="goBack()">
+        ← Retour au panier
+      </button>
+      <button 
+        class="btn-confirm" 
+        (click)="confirmOrder()"
+        [disabled]="!paymentMethod">
+        Confirmer la commande
+      </button>
+    </div>
+  } @else {
+    <!-- Confirmation -->
+    <div class="confirmation-section">
+      <div class="confirmation-icon">✅</div>
+      <h1>Commande confirmée !</h1>
+      <p class="confirmation-message">
+        Votre commande a été enregistrée avec succès.
+      </p>
+      <div class="order-details">
+        <p><strong>Mode de paiement:</strong> {{ paymentMethod === 'cash' ? 'Espèces sur place' : 'Carte bancaire sur place' }}</p>
+        <p><strong>Montant total:</strong> {{ totalPrice | number:'1.2-2' }}€</p>
+      </div>
+      <p class="pickup-info">
+        📍 Veuillez récupérer votre commande au restaurant Sushi's Paradise
+      </p>
+      <p class="redirect-info">Redirection vers l'accueil...</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,32 @@
+<div class="student-offers-page">
+  <div class="header-section">
+    <h1 class="page-title">🎓 Offres Étudiantes</h1>
+    <p class="subtitle">Profitez de -10% sur une sélection de nos boxes !</p>
+    <div class="student-badge">
+      <span class="badge-icon">💳</span>
+      <span>Présentation de la carte étudiante requise à la récupération</span>
+    </div>
+  </div>
+
+  <div class="offers-grid">
+    @for (offer of offers; track offer.id) {
+      <div class="offer-card">
+        <div class="discount-badge">-10%</div>
+        <a [routerLink]="['/product', offer.id]" class="offer-link">
+          <img src="/sushi1.jpg" [alt]="offer.name" class="offer-image" />
+          <div class="offer-content">
+            <h3 class="offer-name">{{ offer.name }}</h3>
+            <p class="offer-description">{{ offer.description }}</p>
+            <div class="price-section">
+              <span class="original-price">{{ getOriginalPrice(offer.price) | number:'1.2-2' }}€</span>
+              <span class="discounted-price">{{ offer.price | number:'1.2-2' }}€</span>
+            </div>
+          </div>
+        </a>
+        <button (click)="addToCart(offer)" class="btn-add-cart">
+          Ajouter au panier
+        </button>
+      </div>
+    }
+  </div>
+</div>

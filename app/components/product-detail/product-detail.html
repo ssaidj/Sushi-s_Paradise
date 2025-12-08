@@ -1,0 +1,63 @@
+<div class="product-detail-container">
+  @if (box) {
+    <div class="product-content">
+      <!-- Titre du produit -->
+      <h1 class="product-title">{{ box.name }}</h1>
+
+      <div class="product-layout">
+        <!-- Image du produit -->
+        <div class="product-image-section">
+          <img src="/sushi1.jpg" [alt]="box.name" class="product-image" />
+        </div>
+
+        <!-- Informations produit -->
+        <div class="product-info-section">
+          <!-- Extras -->
+          <div class="extras-section">
+            <h2 class="extras-title">Avec :</h2>
+            <div class="extras-list">
+              <label class="extra-item">
+                <span>Sauce Soja salée</span>
+                <input type="checkbox" [(ngModel)]="selectedExtras.sauceSalee" />
+              </label>
+              <label class="extra-item">
+                <span>Sauce Soja sucrée</span>
+                <input type="checkbox" [(ngModel)]="selectedExtras.sauceSucree" />
+              </label>
+              <label class="extra-item">
+                <span>Gingembre</span>
+                <input type="checkbox" [(ngModel)]="selectedExtras.gingembre" />
+              </label>
+              <label class="extra-item">
+                <span>Wasabi</span>
+                <input type="checkbox" [(ngModel)]="selectedExtras.wasabi" />
+              </label>
+            </div>
+          </div>
+
+          <!-- Prix et quantité -->
+          <div class="price-quantity-section">
+            <div class="price">{{ box.price.toFixed(2) }}€</div>
+            <div class="quantity-controls">
+              <button class="quantity-btn" (click)="decrementQuantity()">−</button>
+              <span class="quantity-display">{{ quantity }}</span>
+              <button class="quantity-btn" (click)="incrementQuantity()">+</button>
+            </div>
+          </div>
+
+          <!-- Bouton ajouter au panier -->
+          <button class="add-to-cart-btn" (click)="addToCart()">
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="product-description">
+        <p>{{ box.description }}</p>
+      </div>
+    </div>
+  } @else {
+    <div class="loading">Produit introuvable</div>
+  }
+</div>
