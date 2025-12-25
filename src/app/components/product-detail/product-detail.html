@@ -1,0 +1,68 @@
+<div class="product-detail-container">
+  @if (box) {
+    <div class="product-content">
+      <!-- Titre du produit -->
+      <h1 class="product-title">{{ box.name }}</h1>
+
+      <div class="product-layout">
+        <!-- Image du produit -->
+        <div class="product-image-section">
+          <img src="/sushi1.jpg" [alt]="box.name" class="product-image" />
+          
+          <!-- Description -->
+          <div class="product-description">
+            <h2>Description</h2>
+            <p>{{ box.description || 'Une délicieuse box de sushis fraîchement préparés.' }}</p>
+          </div>
+        </div>
+
+        <!-- Informations produit -->
+        <div class="product-info-section">
+          <!-- Aliments -->
+          @if (box.foods && box.foods.length > 0) {
+            <div class="product-foods">
+              <h2>Composition</h2>
+              <ul class="foods-list">
+                @for (food of box.foods; track food.name) {
+                  <li class="food-item">
+                    <span class="food-quantity">{{ food.quantity }}x</span>
+                    <span class="food-name">{{ food.name }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+
+          <!-- Saveurs -->
+          @if (box.flavors && box.flavors.length > 0) {
+            <div class="product-flavors">
+              <h2>Saveurs</h2>
+              <div class="flavors-tags">
+                @for (flavor of box.flavors; track flavor) {
+                  <span class="flavor-tag">{{ flavor }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          <!-- Prix et quantité -->
+          <div class="price-quantity-section">
+            <div class="price">{{ box.price | number:'1.2-2' }}€</div>
+            <div class="quantity-controls">
+              <button class="quantity-btn" (click)="decrementQuantity()">−</button>
+              <span class="quantity-display">{{ quantity }}</span>
+              <button class="quantity-btn" (click)="incrementQuantity()">+</button>
+            </div>
+          </div>
+
+          <!-- Bouton ajouter au panier -->
+          <button class="add-to-cart-btn" (click)="addToCart()">
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="loading">Produit introuvable</div>
+  }
+</div>

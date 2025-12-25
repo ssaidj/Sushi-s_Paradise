@@ -1,0 +1,288 @@
+.profile-container {
+  min-height: 100vh;
+  background: #E8E8E8;
+  padding: 80px 0 0;
+}
+
+.profile-header {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.profile-header h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.profile-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.card-header h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.student-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #666;
+  font-size: 1em;
+}
+
+.info-value {
+  font-size: 1.1em;
+  color: #333;
+  font-weight: 500;
+  text-align: right;
+}
+
+.status-student {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.status-regular {
+  color: #666;
+}
+
+.actions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-text {
+  font-size: 1em;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.info-text strong {
+  color: #FF6B35;
+  font-weight: 600;
+}
+
+.btn-logout {
+  padding: 15px 30px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  align-self: flex-start;
+}
+
+.btn-logout:hover {
+  background: #c82333;
+  transform: scale(1.02);
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 60px 15px 30px;
+  }
+
+  .profile-header h1 {
+    font-size: 2em;
+  }
+
+  .profile-card {
+    padding: 20px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .info-value {
+    text-align: left;
+  }
+
+  .btn-logout {
+    width: 100%;
+  }
+}
+
+/* Footer */
+.footer {
+  margin-top: 60px;
+  background: #1a1a1a;
+  color: white;
+  padding: 50px 0 30px;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.footer-section h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.social-links,
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: color 0.3s;
+}
+
+.social-link:hover {
+  color: #ff6b35;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.icon {
+  font-size: 1.2em;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid #333;
+  color: #999;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+  font-size: 0.95em;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .profile-container {
+    padding: 60px 15px 30px;
+  }
+
+  .profile-header h1 {
+    font-size: 2em;
+  }
+
+  .profile-card {
+    padding: 20px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .info-value {
+    text-align: left;
+  }
+
+  .btn-logout {
+    width: 100%;
+  }
+}

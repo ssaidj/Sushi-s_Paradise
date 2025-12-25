@@ -1,0 +1,310 @@
+.product-detail-container {
+  min-height: calc(100vh - 70px);
+  background: white;
+  padding: 40px 20px;
+}
+
+.product-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-title {
+  font-size: 3em;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #000;
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 40px;
+}
+
+/* Section Image */
+.product-image-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  object-fit: cover;
+}
+
+/* Section Info */
+.product-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Extras */
+.extras-section {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.extras-title {
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.extras-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.extra-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1em;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.extra-item span {
+  color: #333;
+}
+
+.extra-item input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #FF6B35;
+}
+
+/* Prix et quantité */
+.price-quantity-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: white;
+  padding: 20px 25px;
+  border-radius: 12px;
+  border: 2px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #FF6B35;
+}
+
+.quantity-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.quantity-display {
+  font-size: 1.5em;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.quantity-btn {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: white;
+  font-size: 1.8em;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.quantity-btn:hover {
+  background: #000;
+  color: white;
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
+}
+
+/* Bouton Ajouter au panier */
+.add-to-cart-btn {
+  width: 100%;
+  padding: 18px;
+  background: #FF6B35;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.3em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.add-to-cart-btn:hover {
+  background: #e55a2b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.35);
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.25);
+}
+
+/* Description */
+.product-description {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.product-description h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  color: #000;
+}
+
+.product-description p {
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* Foods Section */
+.product-foods {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.product-foods h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  color: #000;
+}
+
+.foods-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.food-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  font-size: 1.05em;
+}
+
+.food-quantity {
+  font-weight: 700;
+  color: #FF6B35;
+  min-width: 35px;
+}
+
+.food-name {
+  color: #333;
+  text-transform: capitalize;
+}
+
+/* Flavors Section */
+.product-flavors {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.product-flavors h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  color: #000;
+}
+
+.flavors-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.flavor-tag {
+  padding: 8px 16px;
+  background: white;
+  border: 2px solid #FF6B35;
+  border-radius: 20px;
+  color: #FF6B35;
+  font-weight: 600;
+  font-size: 0.95em;
+  text-transform: capitalize;
+}
+
+.loading {
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 1.5em;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .product-title {
+    font-size: 2.5em;
+  }
+
+  .product-image {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-title {
+    font-size: 2em;
+  }
+
+  .price {
+    font-size: 2em;
+  }
+
+  .quantity-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5em;
+  }
+}

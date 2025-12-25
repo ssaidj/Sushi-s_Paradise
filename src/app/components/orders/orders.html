@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<div class="orders-container">
+  <div class="orders-header">
+    <h1>📦 Mes Commandes</h1>
+    <p class="subtitle">Historique de vos commandes chez Sushi Paradise</p>
+  </div>
+
+
+  @if (errorMessage) {
+    <div class="error-state">
+      <div class="error-icon">⚠️</div>
+      <h2>Erreur</h2>
+      <p>{{ errorMessage }}</p>
+      <button class="btn-retry" (click)="loadOrders()">Réessayer</button>
+    </div>
+  } @else if (orders.length === 0) {
+    <div class="empty-state">
+      <div class="empty-icon">📭</div>
+      <h2>Aucune commande</h2>
+      <p>Vous n'avez pas encore passé de commande.</p>
+      <a routerLink="/catalog" class="btn-browse">Découvrir nos boxes</a>
+    </div>
+  } @else {
+    <div class="orders-list">
+      @for (order of orders; track order.id) {
+        <div class="order-card">
+          <div class="order-header">
+            <div class="order-info">
+              <h3>Commande #{{ order.id }}</h3>
+              <span class="order-date">{{ order.created_at | date:'dd/MM/yyyy à HH:mm' }}</span>
+            </div>
+            <span class="status-badge" [class]="'status-' + order.status">
+              {{ getStatusLabel(order.status) }}
+            </span>
+          </div>
+
+          <div class="order-items">
+            @for (item of order.items; track item.box_id) {
+              <div class="order-item">
+                <img src="/sushi1.jpg" alt="Sushi" class="item-image" />
+                <div class="item-details">
+                  <span class="item-name">{{ item.name }}</span>
+                  <span class="item-quantity">x{{ item.quantity }}</span>
+                </div>
+                <span class="item-price">{{ item.unit_price | number:'1.2-2' }}€</span>
+              </div>
+            }
+          </div>
+
+          <div class="order-footer">
+            <div class="order-total">
+              <span class="total-label">Total :</span>
+              <span class="total-amount">{{ order.total_price | number:'1.2-2' }}€</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Réseaux:</h3>
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank" class="social-link">
+            <span class="icon"><i class="fa-brands fa-instagram"></i></span> Instagram
+          </a>
+          <a href="https://facebook.com" target="_blank" class="social-link">
+            <span class="icon"><i class="fa-brands fa-square-facebook"></i></span> Facebook
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contacts:</h3>
+        <div class="contact-info">
+          <p class="contact-item">
+            <span class="icon"><i class="fa-solid fa-phone"></i></span> +33 6 67 68 69 70
+          </p>
+          <p class="contact-item">
+            <span class="icon"><i class="fa-solid fa-envelope"></i></span> sushiparadise@gmail.com
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Toutes les sushis été créés avec amour</p>
+      <p>© SushiParadise, Cahier de l'art du Nigiri</p>
+    </div>
+  </footer>
+</div>

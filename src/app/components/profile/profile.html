@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<div class="profile-container">
+  <div class="profile-header">
+    <h1>Mon Profil</h1>
+  </div>
+
+  @if (loading) {
+    <div class="loading">Chargement...</div>
+  } @else if (user) {
+    <div class="profile-content">
+      <!-- User Information Card -->
+      <div class="profile-card">
+        <div class="card-header">
+          <h2>Informations du compte</h2>
+          @if (isStudent()) {
+            <span class="student-badge">🎓 Étudiant</span>
+          }
+        </div>
+        
+        <div class="info-section">
+          <div class="info-item">
+            <span class="info-label">Prénom</span>
+            <span class="info-value">{{ user.firstname }}</span>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-label">Nom</span>
+            <span class="info-value">{{ user.lastname }}</span>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-label">Email</span>
+            <span class="info-value">{{ user.email }}</span>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-label">Statut</span>
+            <span class="info-value">
+              @if (isStudent()) {
+                <span class="status-student">✓ Étudiant (-10% sur toutes les commandes)</span>
+              } @else {
+                <span class="status-regular">Non étudiant</span>
+              }
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Actions Card -->
+      <div class="profile-card">
+        <div class="card-header">
+          <h2>Gestion du compte</h2>
+        </div>
+        
+        <div class="actions-section">
+          <p class="info-text">
+            Vous êtes connecté en tant que <strong>{{ user.email }}</strong>
+          </p>
+          
+          <button class="btn-logout" (click)="logout()">
+            Se déconnecter
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Réseaux:</h3>
+        <div class="social-links">
+          <a href="https://instagram.com" target="_blank" class="social-link">
+            <span class="icon"><i class="fa-brands fa-instagram"></i></span> Instagram
+          </a>
+          <a href="https://facebook.com" target="_blank" class="social-link">
+            <span class="icon"><i class="fa-brands fa-square-facebook"></i></span> Facebook
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contacts:</h3>
+        <div class="contact-info">
+          <p class="contact-item">
+            <span class="icon"><i class="fa-solid fa-phone"></i></span> +33 6 67 68 69 70
+          </p>
+          <p class="contact-item">
+            <span class="icon"><i class="fa-solid fa-envelope"></i></span> sushiparadise@gmail.com
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Toutes les sushis été créés avec amour</p>
+      <p>© SushiParadise, Cahier de l'art du Nigiri</p>
+    </div>
+  </footer>
+</div>
