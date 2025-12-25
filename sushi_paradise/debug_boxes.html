@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Boxes</title>
+</head>
+<body>
+    <h1>Debug API Response</h1>
+    <div id="output"></div>
+    <script>
+        fetch('http://localhost/TD3L/sushi_paradise/api/boxes/index.php')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('output').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                console.log('First box structure:', data[0]);
+            })
+            .catch(e => {
+                document.getElementById('output').innerHTML = '<pre>Error: ' + e + '</pre>';
+            });
+    </script>
+</body>
+</html>
